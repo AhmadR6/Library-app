@@ -3,8 +3,23 @@ const addBookBtn = document.getElementById("addBook");
 const dialog = document.querySelector("dialog");
 const cancelBtn = document.getElementById("cancel");
 const bookForm = document.getElementById("bookForm");
-const myLibrary = [];
-
+const myLibrary = [
+  { title: "The Hobbit", author: "J.R.R. Tolkien", pages: 295, read: true },
+  {
+    title: "The Fellowship of the Ring",
+    author: "J.R.R. Tolkien",
+    pages: 398,
+    read: true,
+  },
+  { title: "The Two Towers", author: "J.R.R. Tolkien", pages: 327, read: true },
+  {
+    title: "The Return of the King",
+    author: "J.R.R. Tolkien",
+    pages: 347,
+    read: true,
+  },
+];
+displayBook();
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -36,6 +51,9 @@ function displayBook() {
       <p>${book.pages} pages</p>
       <p>${book.read ? "Read" : "Not Read"}</p>
       <button class="remove" data-index="${index}">Remove</button>
+      <button class="read" data-index="${index}">${
+      book.read ? "Unread" : "Read"
+    }</button>
     `;
 
     container.appendChild(bookCard);
@@ -45,6 +63,13 @@ function displayBook() {
     button.addEventListener("click", (e) => {
       const index = e.target.getAttribute("data-index");
       myLibrary.splice(index, 1);
+      displayBook();
+    });
+  });
+  document.querySelectorAll(".read").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const index = e.target.getAttribute("data-index");
+      myLibrary[index].read = !myLibrary[index].read;
       displayBook();
     });
   });

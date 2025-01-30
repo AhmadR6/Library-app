@@ -7,7 +7,14 @@
     <title>Document</title>
   </head>
   <body>
-    <dialog>
+    <header>
+      <img src="./src/book-logo.JPG" alt="Library-icon" />
+      <div>
+        <h1>My Library</h1>
+        <p>Organize, Track, and Enjoy Your Books!</p>
+      </div>
+    </header>
+    <dialog id="dialog">
       <form id="bookForm" submit="dialog">
         <label for="title">Title</label>
         <input type="text" id="title" name="title" required />
@@ -17,11 +24,13 @@
         <input type="number" id="pages" name="pages" required />
         <label for="read">Read</label>
         <input type="checkbox" id="read" name="read" />
-        <button type="submit">Submit</button>
-        <button id="cancel">Cancel</button>
+        <div>
+          <button type="submit">Submit</button>
+          <button id="cancel">Cancel</button>
+        </div>
       </form>
     </dialog>
-    <button id="addBook">New Book</button>
+    <button id="addBook">Add New Book</button>
     <div class="book-container"></div>
   </body>
   <script src="script.js"></script>
